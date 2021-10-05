@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"log"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -24,7 +25,7 @@ func openConnection() *gorm.DB {
 		Logger: logger.Default.LogMode(logger.Silent),
 	})
 	if err != nil {
-		panic("failed to connect database")
+		log.Fatal(err)
 	}
 	conn.AutoMigrate(&Credential{})
 	return conn
