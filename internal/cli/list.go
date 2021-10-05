@@ -2,6 +2,8 @@ package cli
 
 import (
 	"fmt"
+
+	"github.com/kelvins/passager/internal/db"
 	"github.com/spf13/cobra"
 )
 
@@ -13,5 +15,12 @@ var ListCmd = &cobra.Command{
 }
 
 func listCredentials(cmd *cobra.Command, args []string) {
-	fmt.Println("run")
+	credentials, err := db.ReadAll()
+	if err == nil {
+		for _, credential := range credentials {
+			fmt.Printf("Login: %s\nPassword: %s\n\n", credential.Login, credential.Password)
+		}
+	} else {
+		fmt.Println("Not found")
+	}
 }

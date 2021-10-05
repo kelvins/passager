@@ -40,6 +40,14 @@ func Read(name string) (Credential, error) {
 	return credential, err
 }
 
+func ReadAll() ([]Credential, error) {
+	fmt.Println("ReadAll")
+	conn := openConnection()
+	var credentials []Credential
+	err := conn.Find(&credentials).Error
+	return credentials, err
+}
+
 func Delete(name string) {
 	fmt.Println("Delete")
 }
