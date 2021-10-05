@@ -3,7 +3,7 @@ package cli
 import (
 	"fmt"
 
-	"github.com/kelvins/passager/internal/db"
+	"github.com/kelvins/passager/internal/models"
 	"github.com/spf13/cobra"
 )
 
@@ -18,7 +18,7 @@ func ListCmdFactory() *cobra.Command {
 }
 
 func listCmdRun(cmd *cobra.Command, args []string) {
-	credentials, err := db.ReadAll()
+	credentials, err := models.ReadAll()
 	if err == nil {
 		for _, credential := range credentials {
 			fmt.Printf("Login: %s\nPassword: %s\n\n", credential.Login, credential.Password)

@@ -2,7 +2,7 @@ package cli
 
 import (
 	"fmt"
-	"github.com/kelvins/passager/internal/db"
+	"github.com/kelvins/passager/internal/models"
 	"github.com/spf13/cobra"
 )
 
@@ -18,12 +18,12 @@ func SetCmdFactory() *cobra.Command {
 }
 
 func setCmdRun(cmd *cobra.Command, args []string) {
-	credential := db.Credential{
+	credential := models.Credential{
 		Name:     args[0],
 		Login:    args[1],
 		Password: args[2],
 	}
-	err := db.Create(&credential)
+	err := models.Create(&credential)
 	if err == nil {
 		fmt.Println("Created")
 	} else {
