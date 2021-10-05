@@ -1,4 +1,4 @@
-package cli
+package commands
 
 import (
 	"fmt"
@@ -15,16 +15,15 @@ func GenerateCmdFactory() *cobra.Command {
 		Run:   generateCmdRun,
 	}
 
-	generateCmd.PersistentFlags().Int8P("length", "l", 12, "Password length. Min. 6 Max. 24")
+	generateCmd.PersistentFlags().Int8P("length", "l", 18, "Password length. Min. 6 Max. 32")
 
 	return generateCmd
 }
 
 func generateCmdRun(cmd *cobra.Command, args []string) {
 	length, err := cmd.Flags().GetInt8("length")
-	if length < 6 || length > 24 || err != nil {
+	if length < 6 || length > 32 || err != nil {
 		log.Fatal("Invalid length")
 	}
-	fmt.Println(password.Generate(0))
-	fmt.Println(cmd.Flag("length").Value)
+	fmt.Println(password.Generate(length))
 }
