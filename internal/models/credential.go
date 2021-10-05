@@ -10,9 +10,9 @@ import (
 
 type Credential struct {
 	gorm.Model
-	Name     string `gorm:"index"`
-	Login    string
-	Password string
+	Name     string `gorm:"index" gorm:"column:name"`
+	Login    string `gorm:"column:login"`
+	Password string `gorm:"column:password"`
 }
 
 func (c Credential) String() string {
@@ -50,9 +50,6 @@ func ReadAll() ([]Credential, error) {
 }
 
 func Delete(name string) error {
-	fmt.Println("Delete")
 	conn := openConnection()
-	var credential Credential
-	err := conn.First(&credential, "name = ?", name).Error
-	return err
+	return conn.Delete(&Credential{}, "name", name).Error
 }
