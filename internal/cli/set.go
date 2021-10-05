@@ -6,15 +6,18 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var SetCmd = &cobra.Command{
-	Use:   "set",
-	Short: "Set credentials to the database",
-	Long:  "Set credentials to the database",
-	Args:  cobra.MinimumNArgs(3),
-	Run:   setCredential,
+func SetCmdFactory() *cobra.Command {
+	var setCmd = &cobra.Command{
+		Use:   "set",
+		Short: "Set credentials to the database",
+		Long:  "Set credentials to the database",
+		Args:  cobra.MinimumNArgs(3),
+		Run:   setCmdRun,
+	}
+	return setCmd
 }
 
-func setCredential(cmd *cobra.Command, args []string) {
+func setCmdRun(cmd *cobra.Command, args []string) {
 	credential := db.Credential{
 		Name:     args[0],
 		Login:    args[1],

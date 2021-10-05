@@ -7,14 +7,20 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var GenerateCmd = &cobra.Command{
-	Use:   "generate",
-	Short: "Randomly generate a secure password",
-	Long:  "Randomly generate a secure password",
-	Run:   generatePassword,
+func GenerateCmdFactory() *cobra.Command {
+	var generateCmd = &cobra.Command{
+		Use:   "generate",
+		Short: "Randomly generate a secure password",
+		Long:  "Randomly generate a secure password",
+		Run:   generateCmdRun,
+	}
+
+	generateCmd.PersistentFlags().Int8P("length", "l", 12, "Password length. Min. 6 Max. 24")
+
+	return generateCmd
 }
 
-func generatePassword(cmd *cobra.Command, args []string) {
+func generateCmdRun(cmd *cobra.Command, args []string) {
 	length, err := cmd.Flags().GetInt8("length")
 	if length < 6 || length > 24 || err != nil {
 		log.Fatal("Invalid length")

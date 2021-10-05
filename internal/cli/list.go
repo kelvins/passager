@@ -7,14 +7,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var ListCmd = &cobra.Command{
-	Use:   "list",
-	Short: "List all database credentials",
-	Long:  "List all database credentials",
-	Run:   listCredentials,
+func ListCmdFactory() *cobra.Command {
+	var listCmd = &cobra.Command{
+		Use:   "list",
+		Short: "List all database credentials",
+		Long:  "List all database credentials",
+		Run:   listCmdRun,
+	}
+	return listCmd
 }
 
-func listCredentials(cmd *cobra.Command, args []string) {
+func listCmdRun(cmd *cobra.Command, args []string) {
 	credentials, err := db.ReadAll()
 	if err == nil {
 		for _, credential := range credentials {
