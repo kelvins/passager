@@ -2,16 +2,17 @@ package commands
 
 import (
 	"fmt"
+	"log"
+
 	"github.com/kelvins/passager/internal/models"
 	"github.com/spf13/cobra"
 )
 
 func SetCmdFactory() *cobra.Command {
 	var setCmd = &cobra.Command{
-		Use:   "set",
+		Use:   "set [NAME] [LOGIN] [PASSWORD]",
 		Short: "Set credentials to the database",
-		Long:  "Set credentials to the database",
-		Args:  cobra.MinimumNArgs(3),
+		Args:  cobra.ExactArgs(3),
 		Run:   setCmdRun,
 	}
 	return setCmd
@@ -24,9 +25,8 @@ func setCmdRun(cmd *cobra.Command, args []string) {
 		Password: args[2],
 	}
 	err := models.Create(&credential)
-	if err == nil {
-		fmt.Println("Created")
-	} else {
-		fmt.Println("Error creating the credential")
+	if err != nil {
+		log.Fatal(err)
 	}
+	fmt.Println("Successfully created!")
 }

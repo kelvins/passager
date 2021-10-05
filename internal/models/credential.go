@@ -36,11 +36,14 @@ func Create(cred *Credential) error {
 	return conn.Create(cred).Error
 }
 
-func Read(name string) (Credential, error) {
+func Read(name string) ([]Credential, error) {
 	conn := openConnection()
-	var credential Credential
-	err := conn.First(&credential, "name = ?", name).Error
-	return credential, err
+	//var credential Credential
+	//err := conn.First(&credential, "name = ?", name).Error
+	//return credential, err
+	var credentials []Credential
+	err := conn.Find(&credentials, "name = ?", name).Error
+	return credentials, err
 }
 
 func ReadAll() ([]Credential, error) {
