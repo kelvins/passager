@@ -49,6 +49,10 @@ func ReadAll() ([]Credential, error) {
 	return credentials, err
 }
 
-func Delete(name string) {
+func Delete(name string) error {
 	fmt.Println("Delete")
+	conn := openConnection()
+	var credential Credential
+	err := conn.First(&credential, "name = ?", name).Error
+	return err
 }
