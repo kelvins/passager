@@ -20,8 +20,9 @@ func ListCmdFactory() *cobra.Command {
 func listCmdRun(cmd *cobra.Command, args []string) {
 	credentials, err := models.ReadAll()
 	if err == nil {
+		fmt.Printf("| %-24s| %-24s| %-24s|\n", "Name", "Login", "Password")
 		for _, credential := range credentials {
-			fmt.Printf("Login: %s\nPassword: %s\n\n", credential.Login, credential.Password)
+			fmt.Println(credential.String())
 		}
 	} else {
 		fmt.Println("Not found")

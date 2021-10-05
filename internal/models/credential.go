@@ -15,6 +15,10 @@ type Credential struct {
 	Password string
 }
 
+func (c Credential) String() string {
+	return fmt.Sprintf("| %-24s| %-24s| %-24s|", c.Name, c.Login, c.Password)
+}
+
 func openConnection() *gorm.DB {
 	conn, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Silent),
@@ -32,7 +36,6 @@ func Create(cred *Credential) error {
 }
 
 func Read(name string) (Credential, error) {
-	fmt.Println("Read")
 	conn := openConnection()
 	var credential Credential
 	err := conn.First(&credential, "name = ?", name).Error
@@ -40,7 +43,6 @@ func Read(name string) (Credential, error) {
 }
 
 func ReadAll() ([]Credential, error) {
-	fmt.Println("ReadAll")
 	conn := openConnection()
 	var credentials []Credential
 	err := conn.Find(&credentials).Error

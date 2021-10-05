@@ -21,7 +21,7 @@ func GetCmdFactory() *cobra.Command {
 func getCmdRun(cmd *cobra.Command, args []string) {
 	credential, err := models.Read(args[0])
 	if err == nil {
-		fmt.Printf("Login: %s\nPassword: %s\n", credential.Login, credential.Password)
+		fmt.Println(credential.String())
 	} else {
 		fmt.Println("Not found")
 	}
