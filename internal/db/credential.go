@@ -26,10 +26,9 @@ func openConnection() *gorm.DB {
 	return conn
 }
 
-func Create(cred *Credential) {
-	fmt.Println("Create")
+func Create(cred *Credential) error {
 	conn := openConnection()
-	conn.Create(cred)
+	return conn.Create(cred).Error
 }
 
 func Read(name string) (Credential, error) {

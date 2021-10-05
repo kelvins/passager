@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"fmt"
 	"github.com/kelvins/passager/internal/db"
 	"github.com/spf13/cobra"
 )
@@ -19,5 +20,10 @@ func setCredential(cmd *cobra.Command, args []string) {
 		Login:    args[1],
 		Password: args[2],
 	}
-	db.Create(&credential)
+	err := db.Create(&credential)
+	if err == nil {
+		fmt.Println("Created")
+	} else {
+		fmt.Println("Error creating the credential")
+	}
 }

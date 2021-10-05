@@ -15,7 +15,7 @@ func main() {
 	rootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
 	rootCmd.CompletionOptions.DisableDefaultCmd = true
 
-	cli.GenerateCmd.PersistentFlags().IntP("length", "l", 12, "Password length")
+	cli.GenerateCmd.PersistentFlags().Int8P("length", "l", 12, "Password length. Min. 6 Max. 24")
 
 	rootCmd.AddCommand(cli.GenerateCmd)
 	rootCmd.AddCommand(cli.SetCmd)
