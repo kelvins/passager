@@ -7,9 +7,11 @@ import (
 
 var ListCmd = &cobra.Command{
 	Use:   "list",
-	Short: "Set credentials to the database",
-	Long:  "Long description",
-	Run: func(cmd *cobra.Command, args []string) {
-	  fmt.Printf("List command")
-	},
+	Short: "List all database credentials",
+	Long:  "List all database credentials",
+	Run:   listCredentials,
+}
+
+func listCredentials(cmd *cobra.Command, args []string) {
+	fmt.Println("run")
 }

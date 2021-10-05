@@ -1,9 +1,9 @@
-# Passenger
+# Passager
 
 Your personal password manager.
 
 ## Build
 
 ```console
-$ go build -o passenger cmd/passenger/main.go
+$ go build -o passager cmd/passager/main.go
 ```

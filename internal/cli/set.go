@@ -8,8 +8,10 @@ import (
 var SetCmd = &cobra.Command{
 	Use:   "set",
 	Short: "Set credentials to the database",
-	Long:  "Long description",
-	Run: func(cmd *cobra.Command, args []string) {
-	  fmt.Printf("Set command")
-	},
+	Long:  "Set credentials to the database",
+	Run:   setCredential,
+}
+
+func setCredential(cmd *cobra.Command, args []string) {
+	fmt.Println("run")
 }
