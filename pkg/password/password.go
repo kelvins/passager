@@ -1,10 +1,10 @@
 package password
 
 import (
-	"time"
 	"math"
-	"strings"
 	"math/rand"
+	"strings"
+	"time"
 )
 
 func generateRandomSequence(sequence string, length int8) []string {
@@ -33,20 +33,26 @@ func generateSymbols(length int8) []string {
 func Generate(length int8, numbers, symbols bool) string {
 	rand.Seed(time.Now().UnixNano())
 
-	numbersRate := 0.3
-	symbolsRate := 0.1
-
-	numbersLength := int8(math.Round(float64(length) * numbersRate))
-	symbolsLength := int8(math.Round(float64(length) * symbolsRate))
-	lettersLength := length - (numbersLength + symbolsLength)
-
 	var result []string
 
-	result = append(result, generateLetters(lettersLength)...)
-	result = append(result, generateNumbers(numbersLength)...)
-	result = append(result, generateSymbols(symbolsLength)...)
+	var numbersLength int8
+	if numbers {
+		numbersRate := 0.3
+		numbersLength = int8(math.Round(float64(length) * numbersRate))
+		result = append(result, generateNumbers(numbersLength)...)
+	}
 
-	rand.Shuffle(len(result), func(i, j int) {result[i], result[j] = result[j], result[i]})
+	var symbolsLength int8
+	if symbols {
+		symbolsRate := 0.1
+		symbolsLength = int8(math.Round(float64(length) * symbolsRate))
+		result = append(result, generateSymbols(symbolsLength)...)
+	}
+
+	lettersLength := length - (numbersLength + symbolsLength)
+	result = append(result, generateLetters(lettersLength)...)
+
+	rand.Shuffle(len(result), func(i, j int) { result[i], result[j] = result[j], result[i] })
 
 	return strings.Join(result, "")
 }
