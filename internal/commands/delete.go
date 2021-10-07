@@ -1,11 +1,11 @@
 package commands
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/kelvins/passager/internal/models"
 	"github.com/spf13/cobra"
+	"github.com/fatih/color"
 )
 
 func DeleteCmdFactory() *cobra.Command {
@@ -19,9 +19,10 @@ func DeleteCmdFactory() *cobra.Command {
 }
 
 func deleteCmdRun(cmd *cobra.Command, args []string) {
-	err := models.Delete(args[0])
+	name := args[0]
+	err := models.Delete(name)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Successfully deleted!")
+	color.Green("Credential %s was successfully deleted!", name)
 }

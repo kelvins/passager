@@ -1,11 +1,11 @@
 package commands
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/kelvins/passager/internal/models"
 	"github.com/spf13/cobra"
+	"github.com/fatih/color"
 )
 
 func SetCmdFactory() *cobra.Command {
@@ -28,5 +28,5 @@ func setCmdRun(cmd *cobra.Command, args []string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Successfully created!")
+	color.Green("Credential %s successfully created!", args[0])
 }

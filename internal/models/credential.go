@@ -11,7 +11,7 @@ import (
 
 type Credential struct {
 	gorm.Model
-	Name     string `gorm:"index" gorm:"column:name"`
+	Name     string `gorm:"index;column:name;unique"`
 	Login    string `gorm:"column:login"`
 	Password string `gorm:"column:password"`
 }
@@ -21,7 +21,8 @@ func (c Credential) String() string {
 }
 
 func openConnection() *gorm.DB {
-	conn, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{
+	dbPath := "test.db"
+	conn, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Silent),
 	})
 	if err != nil {
@@ -36,14 +37,11 @@ func Create(cred *Credential) error {
 	return conn.Create(cred).Error
 }
 
-func Read(name string) ([]Credential, error) {
+func Read(name string) (Credential, error) {
 	conn := openConnection()
-	//var credential Credential
-	//err := conn.First(&credential, "name = ?", name).Error
-	//return credential, err
-	var credentials []Credential
-	err := conn.Find(&credentials, "name = ?", name).Error
-	return credentials, err
+	var credential Credential
+	err := conn.First(&credential, "name = ?", name).Error
+	return credential, err
 }
 
 func ReadAll() ([]Credential, error) {
