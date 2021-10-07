@@ -16,9 +16,9 @@ func GenerateCmdFactory() *cobra.Command {
 		Run:   generateCmdRun,
 	}
 
-	generateCmd.PersistentFlags().Int8P("length", "l", 18, "Password length. Min. 6 Max. 32")
-	generateCmd.Flags().BoolP("no-numbers", "", false, "Disable numbers on password")
-	generateCmd.Flags().BoolP("no-symbols", "", false, "Disable symbols on password")
+	generateCmd.Flags().Int8P("length", "l", 18, "Password length. Min. 6 Max. 32")
+	generateCmd.Flags().Bool("no-numbers", false, "Disable numbers on password")
+	generateCmd.Flags().Bool("no-symbols", false, "Disable symbols on password")
 
 	return generateCmd
 }
