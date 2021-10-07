@@ -24,8 +24,7 @@ func setCmdRun(cmd *cobra.Command, args []string) {
 		Login:    args[1],
 		Password: args[2],
 	}
-	err := models.Create(&credential)
-	if err != nil {
+	if err := models.Create(&credential); err != nil {
 		log.Fatal(err)
 	}
 	color.Green("Credential %s successfully created!", args[0])

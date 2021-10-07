@@ -12,7 +12,6 @@ func ListCmdFactory() *cobra.Command {
 	var listCmd = &cobra.Command{
 		Use:   "list",
 		Short: "List all database credentials",
-		Long:  "List all database credentials",
 		Run:   listCmdRun,
 	}
 	return listCmd

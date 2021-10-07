@@ -11,7 +11,7 @@ import (
 func GetCmdFactory() *cobra.Command {
 	var getCmd = &cobra.Command{
 		Use:   "get [NAME]",
-		Short: "Set credentials to the database",
+		Short: "Get credentials from the database",
 		Args:  cobra.ExactArgs(1),
 		Run:   getCmdRun,
 	}
