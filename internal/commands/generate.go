@@ -25,5 +25,5 @@ func generateCmdRun(cmd *cobra.Command, args []string) {
 	if length < 6 || length > 32 || err != nil {
 		log.Fatal("Invalid length")
 	}
-	fmt.Println(password.Generate(length))
+	fmt.Println(password.Generate(length, true, true))
 }
