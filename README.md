@@ -1,8 +1,8 @@
-# 🔒 Passager
+# Passager
 
 A simple, secure and personal password manager.
 
-## 👷 Build
+## Build
 
 ```console
 $ go build -o passager cmd/passager/main.go
