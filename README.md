@@ -1,6 +1,6 @@
 # Passager
 
-Your personal password manager.
+A simple, secure and personal password manager.
 
 ## Build
 
