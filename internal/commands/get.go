@@ -24,7 +24,7 @@ func getCmdRun(cmd *cobra.Command, args []string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	credential.Password = crypto.Decrypt("a1a2a3a4a5a6a7a8", credential.Password)
+	credential.Password = crypto.Decrypt("mZNUiGjcleTuJZfI", credential.Password)
 	fmt.Printf("| %-24s| %-24s| %-24s|\n", "Name", "Login", "Password")
 	fmt.Println(credential.String())
 }
