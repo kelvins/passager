@@ -3,9 +3,9 @@ package commands
 import (
 	"log"
 
+	"github.com/fatih/color"
 	"github.com/kelvins/passager/internal/models"
 	"github.com/spf13/cobra"
-	"github.com/fatih/color"
 )
 
 func DeleteCmdFactory() *cobra.Command {

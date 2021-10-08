@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// Generates a random string based on the sequence provided and the string length.
 func generateRandomSequence(sequence string, length int8) []string {
 	result := make([]byte, length)
 	for i := range result {
@@ -15,41 +16,43 @@ func generateRandomSequence(sequence string, length int8) []string {
 	return strings.Split(string(result), "")
 }
 
+// Abstraction to call generateRandomSequence using letters sequence.
 func generateLetters(length int8) []string {
 	sequence := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	return generateRandomSequence(sequence, length)
 }
 
+// Abstraction to call generateRandomSequence using numbers sequence.
 func generateNumbers(length int8) []string {
 	sequence := "0123456789"
 	return generateRandomSequence(sequence, length)
 }
 
+// Abstraction to call generateRandomSequence using symbols sequence.
 func generateSymbols(length int8) []string {
 	sequence := "!#$@"
 	return generateRandomSequence(sequence, length)
 }
 
+// Generates a random password using letters, numbers and symbols.
 func Generate(length int8, numbers, symbols bool) string {
 	rand.Seed(time.Now().UnixNano())
 
 	var result []string
 
-	var numbersLength int8
 	if numbers {
 		numbersRate := 0.3
-		numbersLength = int8(math.Round(float64(length) * numbersRate))
+		numbersLength := int8(math.Round(float64(length) * numbersRate))
 		result = append(result, generateNumbers(numbersLength)...)
 	}
 
-	var symbolsLength int8
 	if symbols {
 		symbolsRate := 0.1
-		symbolsLength = int8(math.Round(float64(length) * symbolsRate))
+		symbolsLength := int8(math.Round(float64(length) * symbolsRate))
 		result = append(result, generateSymbols(symbolsLength)...)
 	}
 
-	lettersLength := length - (numbersLength + symbolsLength)
+	lettersLength := length - int8(len(result))
 	result = append(result, generateLetters(lettersLength)...)
 
 	rand.Shuffle(len(result), func(i, j int) { result[i], result[j] = result[j], result[i] })

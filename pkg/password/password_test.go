@@ -1,10 +1,10 @@
 package password
 
 import (
-	"strings"
-	"regexp"
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"regexp"
+	"strings"
+	"testing"
 )
 
 func TestGenerateTimeNowSeed(t *testing.T) {
@@ -14,8 +14,8 @@ func TestGenerateTimeNowSeed(t *testing.T) {
 }
 
 func TestGenerateStritngLength(t *testing.T) {
-	testCases := []struct{
-		length int8
+	testCases := []struct {
+		length  int8
 		numbers bool
 		symbols bool
 	}{
