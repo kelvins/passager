@@ -1,6 +1,8 @@
 package password
 
 import (
+	"strings"
+	"regexp"
 	"testing"
 	"github.com/stretchr/testify/assert"
 )
@@ -25,4 +27,22 @@ func TestGenerateStritngLength(t *testing.T) {
 	for _, tc := range testCases {
 		assert.Equal(t, int(tc.length), len(Generate(tc.length, tc.numbers, tc.symbols)), "length should be equal")
 	}
+}
+
+func TestGenerateLetters(t *testing.T) {
+	var isStringLetters = regexp.MustCompile(`^[a-zA-Z]+$`).MatchString
+	data := strings.Join(generateLetters(20), "")
+	assert.True(t, isStringLetters(data), "data should have only letters")
+}
+
+func TestGenerateNumbers(t *testing.T) {
+	var isStringNumbers = regexp.MustCompile(`^[0-9]+$`).MatchString
+	data := strings.Join(generateNumbers(20), "")
+	assert.True(t, isStringNumbers(data), "data should have only numbers")
+}
+
+func TestGenerateSymbols(t *testing.T) {
+	var isStringSymbols = regexp.MustCompile(`^[!@#$]+$`).MatchString
+	data := strings.Join(generateSymbols(20), "")
+	assert.True(t, isStringSymbols(data), "data should have only symbols")
 }
