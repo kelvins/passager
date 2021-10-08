@@ -7,8 +7,7 @@ import (
 func RootCmdFactory() *cobra.Command {
 	var rootCmd = &cobra.Command{
 		Use:   "passager",
-		Short: "Your personal password manager",
-		Long:  "A simple password manager",
+		Short: "Your personal password manager.",
 	}
 
 	rootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
