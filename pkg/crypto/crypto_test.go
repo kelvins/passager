@@ -6,9 +6,9 @@ import (
 )
 
 func TestEncryptDecrypt(t *testing.T) {
-	key := "a1a2a3a4a5a6a7a8"
+	key := "passwordmanager1"
 	text := "The quick brown fox jumps over the lazy dog"
-	encryptedText := Encrypt(key, text)
-	decryptedText := Decrypt(key, encryptedText)
+	encryptedText := Encrypt(text, key)
+	decryptedText := Decrypt(encryptedText, key)
 	assert.Equal(t, text, decryptedText, "texts should be equal")
 }
