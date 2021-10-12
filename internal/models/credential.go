@@ -1,6 +1,7 @@
 package models
 
 import (
+	"os"
 	"fmt"
 	"log"
 
@@ -20,8 +21,16 @@ func (c Credential) String() string {
 	return fmt.Sprintf("| %-24s| %-24s| %-24s|", c.Name, c.Login, c.Password)
 }
 
+func databasePath() string {
+	dirname, err := os.UserHomeDir()
+	if err != nil {
+        log.Fatal( err )
+    }
+	return fmt.Sprintf("%s/.passager.db", dirname)
+}
+
 func openConnection() *gorm.DB {
-	dbPath := "test.db"
+	dbPath := databasePath()
 	conn, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Silent),
 	})

@@ -17,7 +17,7 @@ func AddCmdFactory() *cobra.Command {
 		Run:   addCmdRun,
 	}
 
-	addCmd.Flags().StringP("key", "k", "", "Key to encrypt/decrypt data using AES")
+	addCmd.Flags().StringP("key", "k", "", "Key to encrypt/decrypt data")
 
 	return addCmd
 }
@@ -26,10 +26,10 @@ func addCmdRun(cmd *cobra.Command, args []string) {
 	password := args[2]
 	key, err := cmd.Flags().GetString("key")
 	if len(key) > 0 {
-		if len(key) != 16 || err != nil {
+		if err != nil {
 			log.Fatal("Invalid key")
 		} else {
-			password = crypto.Encrypt(key, password)
+			password = crypto.Encrypt(password, key)
 		}
 	}
 	credential := models.Credential{

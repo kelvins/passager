@@ -17,24 +17,24 @@ func GetCmdFactory() *cobra.Command {
 		Run:   getCmdRun,
 	}
 
-	getCmd.Flags().StringP("key", "k", "", "Key to encrypt/decrypt data using AES")
+	getCmd.Flags().StringP("key", "k", "", "Key to encrypt/decrypt data")
 
 	return getCmd
 }
 
 func getCmdRun(cmd *cobra.Command, args []string) {
+	credential, err := models.Read(args[0])
+	if err != nil {
+		log.Fatal(err)
+	}
 	key, err := cmd.Flags().GetString("key")
 	if len(key) > 0 {
-		if len(key) != 16 || err != nil {
+		if err != nil {
 			log.Fatal("Invalid key")
 		} else {
-			credential, err := models.Read(args[0])
-			if err != nil {
-				log.Fatal(err)
-			}
-			credential.Password = crypto.Decrypt(key, credential.Password)
-			fmt.Printf("| %-24s| %-24s| %-24s|\n", "Name", "Login", "Password")
-			fmt.Println(credential.String())
+			credential.Password = crypto.Decrypt(credential.Password, key)
 		}
 	}
+	fmt.Printf("| %-24s| %-24s| %-24s|\n", "Name", "Login", "Password")
+	fmt.Println(credential.String())
 }
