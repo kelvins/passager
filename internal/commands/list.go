@@ -1,10 +1,10 @@
 package commands
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/kelvins/passager/internal/models"
+	"github.com/kelvins/passager/internal/renderer"
 	"github.com/kelvins/passager/pkg/crypto"
 	"github.com/spf13/cobra"
 )
@@ -30,11 +30,14 @@ func listCmdRun(cmd *cobra.Command, args []string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("| %-24s| %-24s| %-24s|\n", "Name", "Login", "Password")
-	for _, credential := range credentials {
-		if len(key) > 0 {
+	var newCredentials []models.Credential
+	if len(key) > 0 {
+		for _, credential := range credentials {
 			credential.Password = crypto.Decrypt(credential.Password, key)
+			newCredentials = append(newCredentials, credential)
 		}
-		fmt.Println(credential.String())
+	} else {
+		newCredentials = credentials
 	}
+	renderer.PrintCredentials(newCredentials)
 }
