@@ -4,7 +4,7 @@ A simple, secure and personal password manager.
 
 ## Build
 
-```console
+```
 $ go build -o passager cmd/passager/main.go
 ```
 
@@ -19,19 +19,19 @@ $ passager generate
 ### Add
 
 ```
-$ passager add GMAIL my@email.com supersecret -k my-16-bytes-key
+$ passager add GMAIL my@email.com supersecret -k #encryption-key#
 ```
 
 ### Get
 
 ```
-$ passager get GMAIL -k my-16-bytes-key
+$ passager get GMAIL -k #encryption-key#
 ```
 
 ### List
 
 ```
-$ passager list -k my-16-bytes-key
+$ passager list -k #encryption-key#
 ```
 
 ### Delete
@@ -39,3 +39,7 @@ $ passager list -k my-16-bytes-key
 ```
 $ passager delete GMAIL
 ```
+
+## Notes
+
+- The encryption key should have 16 bytes
