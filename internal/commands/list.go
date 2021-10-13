@@ -16,7 +16,7 @@ func ListCmdFactory() *cobra.Command {
 		Run:   listCmdRun,
 	}
 
-	listCmd.Flags().StringP("key", "k", "", "Key to encrypt/decrypt data")
+	listCmd.Flags().StringP("key", "k", "#encryption-key#", "Key to encrypt/decrypt data")
 
 	return listCmd
 }
@@ -31,13 +31,9 @@ func listCmdRun(cmd *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 	var newCredentials []models.Credential
-	if len(key) > 0 {
-		for _, credential := range credentials {
-			credential.Password = crypto.Decrypt(credential.Password, key)
-			newCredentials = append(newCredentials, credential)
-		}
-	} else {
-		newCredentials = credentials
+	for _, credential := range credentials {
+		credential.Password = crypto.Decrypt(credential.Password, key)
+		newCredentials = append(newCredentials, credential)
 	}
 	renderer.PrintCredentials(newCredentials)
 }

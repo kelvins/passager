@@ -43,3 +43,7 @@ $ passager delete GMAIL
 ## Notes
 
 - The encryption key should have 16 bytes
+
+## TODO
+
+- [ ] Slugify name to save/search

@@ -17,7 +17,7 @@ func GetCmdFactory() *cobra.Command {
 		Run:   getCmdRun,
 	}
 
-	getCmd.Flags().StringP("key", "k", "", "Key to encrypt/decrypt data")
+	getCmd.Flags().StringP("key", "k", "#encryption-key#", "Key to encrypt/decrypt data")
 
 	return getCmd
 }
@@ -28,12 +28,9 @@ func getCmdRun(cmd *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 	key, err := cmd.Flags().GetString("key")
-	if len(key) > 0 {
-		if err != nil {
-			log.Fatal("Invalid key")
-		} else {
-			credential.Password = crypto.Decrypt(credential.Password, key)
-		}
+	if err != nil {
+		log.Fatal("Invalid key")
 	}
+	credential.Password = crypto.Decrypt(credential.Password, key)
 	renderer.PrintCredentials(credential)
 }

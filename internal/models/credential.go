@@ -1,9 +1,9 @@
 package models
 
 import (
-	"os"
 	"fmt"
 	"log"
+	"os"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -12,20 +12,17 @@ import (
 
 type Credential struct {
 	gorm.Model
-	Name     string `gorm:"index;column:name;unique"`
-	Login    string `gorm:"column:login"`
-	Password string `gorm:"column:password"`
-}
-
-func (c Credential) String() string {
-	return fmt.Sprintf("| %-24s| %-24s| %-24s|", c.Name, c.Login, c.Password)
+	Name        string `gorm:"index;column:name;unique"`
+	Login       string `gorm:"column:login"`
+	Password    string `gorm:"column:password"`
+	Description string `gorm:"column:description"`
 }
 
 func databasePath() string {
 	dirname, err := os.UserHomeDir()
 	if err != nil {
-        log.Fatal( err )
-    }
+		log.Fatal(err)
+	}
 	return fmt.Sprintf("%s/.passager.db", dirname)
 }
 

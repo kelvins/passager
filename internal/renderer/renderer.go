@@ -1,8 +1,8 @@
 package renderer
 
 import (
-	"os"
 	"log"
+	"os"
 
 	"github.com/kelvins/passager/internal/models"
 	"github.com/olekukonko/tablewriter"
@@ -20,10 +20,10 @@ func PrintCredentials(data interface{}) {
 	}
 
 	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader([]string{"Name", "Login", "Password"})
+	table.SetHeader([]string{"Name", "Login", "Password", "Description"})
 
 	for _, v := range credentials {
-		table.Append([]string{v.Name, v.Login, v.Password})
+		table.Append([]string{v.Name, v.Login, v.Password, v.Description})
 	}
 	table.Render()
 }
