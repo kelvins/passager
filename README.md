@@ -1,4 +1,4 @@
-# Passager
+# :lock: Passager
 
 A simple, secure and personal password manager.
 
@@ -18,7 +18,7 @@ Run the tests:
 $ make tests
 ```
 
-## Usage
+## 🚸 Usage
 
 ### Generate
 
@@ -60,11 +60,11 @@ Delete an existing record:
 $ passager delete MyCredential
 ```
 
-## Encryption
+## :shield: Encryption
 
 Use Advanced Encryption Standard (AES) encryption algorithm.
 
-## Notes
+## 📓 Notes
 
 - The encryption key should have 16 bytes
 
