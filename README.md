@@ -47,3 +47,4 @@ $ passager delete GMAIL
 ## TODO
 
 - [ ] Slugify name to save/search
+- [ ] Add version and -v command
