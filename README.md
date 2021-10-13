@@ -4,13 +4,25 @@ A simple, secure and personal password manager.
 
 ## Build
 
+Build the project:
+
 ```
-$ go build -o passager cmd/passager/main.go
+$ make build
+```
+
+## Tests
+
+Run the tests:
+
+```
+$ make tests
 ```
 
 ## Usage
 
 ### Generate
+
+Generate a random and secure password:
 
 ```
 $ passager generate
@@ -18,27 +30,39 @@ $ passager generate
 
 ### Add
 
+Add a new credential record:
+
 ```
-$ passager add GMAIL my@email.com supersecret -k #encryption-key#
+$ passager add MyCredential my@email.com supersecret
 ```
 
 ### Get
 
+Get an existing credential record:
+
 ```
-$ passager get GMAIL -k #encryption-key#
+$ passager get MyCredential
 ```
 
 ### List
 
+List all records:
+
 ```
-$ passager list -k #encryption-key#
+$ passager list
 ```
 
 ### Delete
 
+Delete an existing record:
+
 ```
-$ passager delete GMAIL
+$ passager delete MyCredential
 ```
+
+## Encryption
+
+Use Advanced Encryption Standard (AES) encryption algorithm.
 
 ## Notes
 
@@ -48,3 +72,10 @@ $ passager delete GMAIL
 
 - [ ] Slugify name to save/search
 - [ ] Add version and -v command
+- [ ] Increase code coverage to at least 60%
+- [ ] Improve README documentation
+- [ ] Improve package documentation
+- [ ] Add CONTRIBUTION guide
+- [ ] Add project license
+- [ ] Run tests on github actions
+- [ ] Allow user to set database path using envvar
