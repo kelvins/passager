@@ -1,24 +1,14 @@
 # :lock: Passager
 
-A simple, secure and personal password manager.
+> A simple, secure and personal password manager.
 
-## Build
+Some passager features:
 
-Build the project:
+- Easy to use. Manage your passwords locally using a simple command line interface (CLI).
+- You own your data. Move your database file to wherever you want.
+- Secure by default. Use Advanced Encryption Standard (AES) by default. You can set your own encryption key.
 
-```
-$ make build
-```
-
-## Tests
-
-Run the tests:
-
-```
-$ make tests
-```
-
-## 🚸 Usage
+## Usage
 
 ### Generate
 
@@ -60,18 +50,44 @@ Delete an existing record:
 $ passager delete MyCredential
 ```
 
-## :shield: Encryption
+### Help
 
-Use Advanced Encryption Standard (AES) encryption algorithm.
+All commands have a helper:
 
-## 📓 Notes
+```
+$ passager --help
+```
 
-- The encryption key should have 16 bytes
+## Settings
+
+It is possible to configure your `passager` environment by settings the following environment variables:
+
+- `PASSAGER_DATABASE`: path to the database file. Default: `~/.passager.db`.
+- `PASSAGER_ENCRYPTION_KEY`: default key to be used for data encryption. The encryption key should have 16 bytes.
+
+## Development
+
+### Build
+
+Build the project using Makefile:
+
+```
+$ make build
+```
+
+### Tests
+
+Run all tests and calculate the code coverage using Makefile:
+
+```
+$ make tests
+```
 
 ## TODO
 
 - [X] Improve GET using LIKE
 - [X] Add version and -v command
+- [ ] Allow user to set an encryption key using envvars
 - [ ] Increase code coverage to at least 60%
 - [ ] Improve README documentation
 - [ ] Improve package documentation
