@@ -1,10 +1,10 @@
 package models
 
 import (
-	"github.com/stretchr/testify/assert"
-	"os"
-	"log"
 	"fmt"
+	"github.com/stretchr/testify/assert"
+	"log"
+	"os"
 	"testing"
 )
 

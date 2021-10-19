@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"log"
 	"fmt"
+	"log"
 
 	"github.com/kelvins/passager/internal/models"
 	"github.com/spf13/cobra"

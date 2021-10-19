@@ -1,11 +1,11 @@
 package commands
 
 import (
-	"fmt"
-	"testing"
 	"bytes"
-	"io/ioutil"
+	"fmt"
 	"github.com/stretchr/testify/assert"
+	"io/ioutil"
+	"testing"
 )
 
 func TestRootCmd(t *testing.T) {
