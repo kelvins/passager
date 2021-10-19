@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"github.com/fatih/color"
+	"fmt"
 	"github.com/spf13/cobra"
 )
 
@@ -24,6 +24,6 @@ func RootCmdFactory() *cobra.Command {
 func rootCmdRun(cmd *cobra.Command, args []string) {
 	version, _ := cmd.Flags().GetBool("version")
 	if version {
-		color.Green("Passager v%s", Version)
+		fmt.Fprintf(cmd.OutOrStdout(), "Passager v%s", Version)
 	}
 }

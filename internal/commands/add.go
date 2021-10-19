@@ -2,8 +2,8 @@ package commands
 
 import (
 	"log"
+	"fmt"
 
-	"github.com/fatih/color"
 	"github.com/kelvins/passager/internal/models"
 	"github.com/kelvins/passager/pkg/crypto"
 	"github.com/spf13/cobra"
@@ -39,5 +39,5 @@ func addCmdRun(cmd *cobra.Command, args []string) {
 	if err := models.Create(&credential); err != nil {
 		log.Fatal(err)
 	}
-	color.Green("Credential %s successfully created!", args[0])
+	fmt.Fprintf(cmd.OutOrStdout(), "Credential %s successfully created!", args[0])
 }

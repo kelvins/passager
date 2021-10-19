@@ -2,8 +2,8 @@ package commands
 
 import (
 	"log"
+	"fmt"
 
-	"github.com/fatih/color"
 	"github.com/kelvins/passager/internal/models"
 	"github.com/spf13/cobra"
 )
@@ -24,5 +24,5 @@ func deleteCmdRun(cmd *cobra.Command, args []string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	color.Green("Credential %s was successfully deleted!", name)
+	fmt.Fprintf(cmd.OutOrStdout(), "Credential %s was successfully deleted!", name)
 }
