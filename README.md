@@ -87,7 +87,7 @@ $ make tests
 
 - [X] Improve GET using LIKE
 - [X] Add version and -v command
-- [ ] Allow user to set an encryption key using envvars
+- [X] Allow user to set an encryption key using envvars
 - [ ] Increase code coverage to at least 60%
 - [ ] Improve README documentation
 - [ ] Improve package documentation

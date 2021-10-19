@@ -1,10 +1,18 @@
 package crypto
 
 import (
+	"os"
+	"log"
 	"crypto/aes"
 	"crypto/cipher"
-	"log"
 )
+
+func EncryptionKey() string {
+	if key := os.Getenv("PASSAGER_ENCRYPTION_KEY"); key != "" {
+		return key
+	}
+	return "#encryption-key#"
+}
 
 func newGCM(key string) cipher.AEAD {
 	block, err := aes.NewCipher([]byte(key))

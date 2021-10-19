@@ -17,7 +17,7 @@ func GetCmdFactory() *cobra.Command {
 		Run:   getCmdRun,
 	}
 
-	getCmd.Flags().StringP("key", "k", "#encryption-key#", "Key to encrypt/decrypt data")
+	getCmd.Flags().StringP("key", "k", crypto.EncryptionKey(), "Key to encrypt/decrypt data")
 
 	return getCmd
 }
