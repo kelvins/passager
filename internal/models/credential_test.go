@@ -16,22 +16,33 @@ func tearDown() {
 	os.Remove("/tmp/passager-test.db")
 }
 
-func assertEqualCredential(t *testing.T, first, second Credential) {
-	assert.Equal(t, first.Name, second.Name, "name should be equal")
-	assert.Equal(t, first.Login, second.Login, "login should be equal")
-	assert.Equal(t, first.Password, second.Password, "password should be equal")
-	assert.Equal(t, first.Description, second.Description, "description should be equal")
-}
-
-func TestCreate(t *testing.T) {
-	setUp()
-	defer tearDown()
-	credential := Credential{
+func fakeCredential() Credential {
+	return Credential{
 		Name:        "name",
 		Login:       "login",
 		Password:    "password",
 		Description: "description",
 	}
+}
+
+func assertEqualCredential(t *testing.T, first, second Credential) {
+	assert.Equal(t, first.Name, second.Name)
+	assert.Equal(t, first.Login, second.Login)
+	assert.Equal(t, first.Password, second.Password)
+	assert.Equal(t, first.Description, second.Description)
+}
+
+func TestDatabasePath(t *testing.T) {
+	os.Unsetenv("PASSAGER_DATABASE")
+	dirname, _ := os.UserHomeDir()
+	dbPath := fmt.Sprintf("%s/.passager.db", dirname)
+	assert.Equal(t, databasePath(), dbPath)
+}
+
+func TestCreate(t *testing.T) {
+	setUp()
+	defer tearDown()
+	credential := fakeCredential()
 	Create(&credential)
 
 	conn := openConnection()
@@ -44,12 +55,7 @@ func TestReadAll(t *testing.T) {
 	setUp()
 	defer tearDown()
 	conn := openConnection()
-	credential := Credential{
-		Name:        "name",
-		Login:       "login",
-		Password:    "password",
-		Description: "description",
-	}
+	credential := fakeCredential()
 	conn.Create(&credential)
 
 	credentials, err := ReadAll("name")
@@ -64,12 +70,7 @@ func TestDelete(t *testing.T) {
 	setUp()
 	defer tearDown()
 	conn := openConnection()
-	credential := Credential{
-		Name:        "name",
-		Login:       "login",
-		Password:    "password",
-		Description: "description",
-	}
+	credential := fakeCredential()
 	conn.Create(&credential)
 
 	var loadedCredential Credential
