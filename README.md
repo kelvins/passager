@@ -71,7 +71,7 @@ Use Advanced Encryption Standard (AES) encryption algorithm.
 ## TODO
 
 - [X] Improve GET using LIKE
-- [ ] Add version and -v command
+- [X] Add version and -v command
 - [ ] Increase code coverage to at least 60%
 - [ ] Improve README documentation
 - [ ] Improve package documentation
