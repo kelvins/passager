@@ -78,4 +78,4 @@ Use Advanced Encryption Standard (AES) encryption algorithm.
 - [ ] Add CONTRIBUTION guide
 - [ ] Add project license
 - [ ] Run tests on github actions
-- [ ] Allow user to set database path using envvar
+- [X] Allow user to set database path using envvar

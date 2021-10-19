@@ -19,6 +19,9 @@ type Credential struct {
 }
 
 func databasePath() string {
+	if path := os.Getenv("PASSAGER_DATABASE"); path != "" {
+		return path
+	}
 	dirname, err := os.UserHomeDir()
 	if err != nil {
 		log.Fatal(err)
