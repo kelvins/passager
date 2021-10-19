@@ -81,5 +81,5 @@ func TestDelete(t *testing.T) {
 		log.Fatal(err)
 	}
 	err = conn.First(&loadedCredential, "name = name").Error
-	assert.Equal(t, fmt.Sprintf("%s", err), "record not found", "message should be record not found")
+	assert.Equal(t, fmt.Sprint(err), "record not found", "message should be record not found")
 }
