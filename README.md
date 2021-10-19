@@ -70,7 +70,7 @@ Use Advanced Encryption Standard (AES) encryption algorithm.
 
 ## TODO
 
-- [ ] Slugify name to save/search
+- [X] Improve GET using LIKE
 - [ ] Add version and -v command
 - [ ] Increase code coverage to at least 60%
 - [ ] Improve README documentation

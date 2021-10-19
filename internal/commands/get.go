@@ -23,7 +23,7 @@ func GetCmdFactory() *cobra.Command {
 }
 
 func getCmdRun(cmd *cobra.Command, args []string) {
-	credential, err := models.Read(args[0])
+	credentials, err := models.ReadAll(args[0])
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -31,6 +31,10 @@ func getCmdRun(cmd *cobra.Command, args []string) {
 	if err != nil {
 		log.Fatal("Invalid key")
 	}
-	credential.Password = crypto.Decrypt(credential.Password, key)
-	renderer.PrintCredentials(credential)
+	var newCredentials []models.Credential
+	for _, credential := range credentials {
+		credential.Password = crypto.Decrypt(credential.Password, key)
+		newCredentials = append(newCredentials, credential)
+	}
+	renderer.PrintCredentials(newCredentials)
 }

@@ -26,7 +26,7 @@ func listCmdRun(cmd *cobra.Command, args []string) {
 	if err != nil {
 		log.Fatal("Invalid key")
 	}
-	credentials, err := models.ReadAll()
+	credentials, err := models.ReadAll("")
 	if err != nil {
 		log.Fatal(err)
 	}
