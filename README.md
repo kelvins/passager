@@ -2,82 +2,62 @@
 
 > A simple, secure and personal password manager.
 
-Some passager features:
+Some `passager` features:
 
 - Easy to use. Manage your passwords locally using a simple command line interface (CLI).
 - You own your data. Move your database file to wherever you want.
 - Secure by default. Use Advanced Encryption Standard (AES) by default. You can set your own encryption key.
 
-## Usage
+## 🚸 Usage
 
-### Generate
-
-Generate a random and secure password:
+`generate` a random and secure password:
 
 ```
 $ passager generate
 ```
 
-### Add
-
-Add a new credential record:
+`add` a new credential:
 
 ```
 $ passager add MyCredential my@email.com supersecret
 ```
 
-### Get
-
-Get an existing credential record:
+`get` an existing credential:
 
 ```
 $ passager get MyCredential
 ```
 
-### List
-
-List all records:
+`list` all credentials:
 
 ```
 $ passager list
 ```
 
-### Delete
-
-Delete an existing record:
+`delete` an existing credential:
 
 ```
 $ passager delete MyCredential
 ```
 
-### Help
-
-All commands have a helper:
-
-```
-$ passager --help
-```
-
-## Settings
+## ⚙️ Settings
 
 It is possible to configure your `passager` environment by settings the following environment variables:
 
 - `PASSAGER_DATABASE`: path to the database file. Default: `~/.passager.db`.
-- `PASSAGER_ENCRYPTION_KEY`: default key to be used for data encryption. The encryption key should have 16 bytes.
+- `PASSAGER_ENCRYPTION_KEY`: data encryption key. The encryption key should have 16 bytes.
 
-## Development
+## 👷 Development
 
-### Build
+#### Build
 
-Build the project using Makefile:
+Build the project using:
 
 ```
 $ make build
 ```
 
-### Tests
-
-Run all tests and calculate the code coverage using Makefile:
+Run all tests and calculate the code coverage using:
 
 ```
 $ make tests
@@ -89,7 +69,7 @@ $ make tests
 - [X] Add version and -v command
 - [X] Allow user to set an encryption key using envvars
 - [ ] Increase code coverage to at least 60%
-- [ ] Improve README documentation
+- [X] Improve README documentation
 - [ ] Improve package documentation
 - [ ] Add CONTRIBUTION guide
 - [ ] Add project license
