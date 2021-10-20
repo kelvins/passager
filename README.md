@@ -49,8 +49,6 @@ It is possible to configure your `passager` environment by settings the followin
 
 ## 👷 Development
 
-#### Build
-
 Build the project using:
 
 ```
@@ -62,16 +60,3 @@ Run all tests and calculate the code coverage using:
 ```
 $ make tests
 ```
-
-## TODO
-
-- [X] Improve GET using LIKE
-- [X] Add version and -v command
-- [X] Allow user to set an encryption key using envvars
-- [ ] Increase code coverage to at least 60%
-- [X] Improve README documentation
-- [ ] Improve package documentation
-- [ ] Add CONTRIBUTION guide
-- [ ] Add project license
-- [ ] Run tests on github actions
-- [X] Allow user to set database path using envvar
