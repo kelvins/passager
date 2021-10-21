@@ -8,6 +8,15 @@ Some `passager` features:
 - You own your data. Move your database file to wherever you want.
 - Secure by default. Use Advanced Encryption Standard (AES) by default. You can set your own encryption key.
 
+## :package: Installation
+
+```
+$ wget --no-check-certificate https://github.com/kelvins/passager/releases/download/v0.1.0/passager-<GOOS>-<GOARCH>
+$ chmod +x ./passager-<GOOS>-<GOARCH>
+$ sudo mv ./passager-<GOOS>-<GOARCH> /usr/local/bin/passager
+$ passager --version
+```
+
 ## 🚸 Usage
 
 `generate` a random and secure password:
