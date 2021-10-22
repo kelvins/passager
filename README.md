@@ -49,7 +49,7 @@ $ passager list
 $ passager delete MyCredential
 ```
 
-## ⚙️ Settings
+## 🛠️ Settings
 
 It is possible to configure your `passager` environment by settings the following environment variables:
 
@@ -61,7 +61,7 @@ It is possible to configure your `passager` environment by settings the followin
 Build the project using:
 
 ```
-$ make build
+$ make build-dev
 ```
 
 Run all tests and calculate the code coverage using:
