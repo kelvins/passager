@@ -1,6 +1,7 @@
 package renderer
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -17,6 +18,11 @@ func PrintCredentials(data interface{}) {
 		credentials = append(credentials, value...)
 	default:
 		log.Fatal("Invalid value to print")
+	}
+
+	if len(credentials) == 0 {
+		fmt.Println("No credentials found!")
+		return
 	}
 
 	table := tablewriter.NewWriter(os.Stdout)
