@@ -24,6 +24,6 @@ func RootCmdFactory() *cobra.Command {
 func rootCmdRun(cmd *cobra.Command, args []string) {
 	version, _ := cmd.Flags().GetBool("version")
 	if version {
-		fmt.Fprintf(cmd.OutOrStdout(), "Passager v%s", Version)
+		fmt.Fprintf(cmd.OutOrStdout(), "Passager v%s\n", Version)
 	}
 }

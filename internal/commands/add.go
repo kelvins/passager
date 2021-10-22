@@ -39,5 +39,5 @@ func addCmdRun(cmd *cobra.Command, args []string) {
 	if err := models.Create(&credential); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Fprintf(cmd.OutOrStdout(), "Credential %s successfully created!", args[0])
+	fmt.Fprintf(cmd.OutOrStdout(), "Credential %s successfully created!\n", args[0])
 }

@@ -24,5 +24,5 @@ func deleteCmdRun(cmd *cobra.Command, args []string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Fprintf(cmd.OutOrStdout(), "Credential %s was successfully deleted!", name)
+	fmt.Fprintf(cmd.OutOrStdout(), "Credential %s was successfully deleted!\n", name)
 }
