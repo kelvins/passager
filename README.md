@@ -71,7 +71,7 @@ $ passager delete MyCredential
 It is possible to configure your `passager` environment by settings the following environment variables:
 
 - `PASSAGER_DATABASE`: path to the database file. Default: `~/.passager.db`.
-- `PASSAGER_ENCRYPTION_KEY`: data encryption key. The encryption key should have 16 bytes.
+- `PASSAGER_ENCRYPTION_KEY`: data encryption key. The encryption key must be 16 bytes.
 
 ## 👷 Development
 
