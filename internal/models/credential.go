@@ -49,7 +49,7 @@ func Create(cred *Credential) error {
 func ReadAll(name string) ([]Credential, error) {
 	conn := openConnection()
 	var credentials []Credential
-	err := conn.Find(&credentials, "LOWER(name) LIKE LOWER(?)", fmt.Sprintf("%%%s%%", name)).Error
+	err := conn.Order("name").Find(&credentials, "LOWER(name) LIKE LOWER(?)", fmt.Sprintf("%%%s%%", name)).Error
 	return credentials, err
 }
 
