@@ -55,5 +55,5 @@ func ReadAll(name string) ([]Credential, error) {
 
 func Delete(name string) error {
 	conn := openConnection()
-	return conn.Delete(&Credential{}, "name", name).Error
+	return conn.Unscoped().Delete(&Credential{}, "name", name).Error
 }
