@@ -48,6 +48,8 @@ $ passager generate
 $ passager add MyCredential my@email.com supersecret
 ```
 
+> ⚠️ Use a whitespace prefix to your command to prevent it from being included in the history.
+
 `get` an existing credential:
 
 ```
