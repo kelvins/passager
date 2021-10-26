@@ -30,5 +30,6 @@ func generateCmdRun(cmd *cobra.Command, args []string) {
 	}
 	noNumbers, _ := cmd.Flags().GetBool("no-numbers")
 	noSymbols, _ := cmd.Flags().GetBool("no-symbols")
-	fmt.Println(password.Generate(length, !noNumbers, !noSymbols))
+	password := password.Generate(length, !noNumbers, !noSymbols)
+	fmt.Fprintln(cmd.OutOrStdout(), password)
 }
