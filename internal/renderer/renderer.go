@@ -2,14 +2,14 @@ package renderer
 
 import (
 	"fmt"
+	"io"
 	"log"
-	"os"
 
 	"github.com/kelvins/passager/internal/models"
 	"github.com/olekukonko/tablewriter"
 )
 
-func PrintCredentials(data interface{}) {
+func PrintCredentials(w io.Writer, data interface{}) {
 	var credentials []models.Credential
 	switch value := data.(type) {
 	case models.Credential:
@@ -25,7 +25,7 @@ func PrintCredentials(data interface{}) {
 		return
 	}
 
-	table := tablewriter.NewWriter(os.Stdout)
+	table := tablewriter.NewWriter(w)
 	table.SetHeader([]string{"Name", "Login", "Password", "Description"})
 
 	for _, v := range credentials {

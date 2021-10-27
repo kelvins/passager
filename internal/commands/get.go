@@ -36,5 +36,5 @@ func getCmdRun(cmd *cobra.Command, args []string) {
 		credential.Password = crypto.Decrypt(credential.Password, key)
 		newCredentials = append(newCredentials, credential)
 	}
-	renderer.PrintCredentials(newCredentials)
+	renderer.PrintCredentials(cmd.OutOrStdout(), newCredentials)
 }
