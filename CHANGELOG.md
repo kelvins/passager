@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2021-10-28
+
 ### Added
 
 - Add this CHANGELOG to keep track of changes.
@@ -21,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Perform a hard delete instead of a soft delete to avoid issues related to the unique name.
 
-## [0.1.0] - 2021-11-19
+## [0.1.0] - 2021-10-19
 
 ### Added
 

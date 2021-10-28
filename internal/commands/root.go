@@ -5,7 +5,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var Version = "0.1.0"
+var Version = "0.2.0"
 
 func RootCmdFactory() *cobra.Command {
 	var rootCmd = &cobra.Command{

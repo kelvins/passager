@@ -13,7 +13,7 @@ Some `passager` features:
 Download the appropriate binary for your OS and architecture from the [releases](https://github.com/kelvins/passager/releases) page, for example:
 
 ```
-$ wget --no-check-certificate https://github.com/kelvins/passager/releases/download/v0.1.0/passager-linux-amd64
+$ wget --no-check-certificate https://github.com/kelvins/passager/releases/download/v0.2.0/passager-linux-amd64
 ```
 
 Make sure the file is executable:
