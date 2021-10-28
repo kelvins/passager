@@ -19,7 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Some outputs were not including a line breaking
 - Perform a hard delete instead of a soft delete to avoid issues related to the unique name.
 
 ## [0.1.0] - 2021-11-19
