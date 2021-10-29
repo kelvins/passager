@@ -76,7 +76,7 @@ $ passager add -h
 
 ## 🛠️ Settings
 
-It is possible to configure your `passager` environment by settings the following environment variables:
+It is possible to configure your `passager` environment by setting the following environment variables:
 
 - `PASSAGER_DATABASE`: path to the database file. Default: `~/.passager.db`.
 - `PASSAGER_ENCRYPTION_KEY`: data encryption key. The encryption key must be 16 bytes.
