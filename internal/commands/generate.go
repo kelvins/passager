@@ -15,11 +15,9 @@ func GenerateCmdFactory() *cobra.Command {
 		Long:  "Randomly generate a secure password",
 		Run:   generateCmdRun,
 	}
-
 	generateCmd.Flags().Int8P("length", "l", 18, "Password length. Between 6-32")
 	generateCmd.Flags().Bool("no-numbers", false, "Disable numbers on password")
 	generateCmd.Flags().Bool("no-symbols", false, "Disable symbols on password")
-
 	return generateCmd
 }
 

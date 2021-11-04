@@ -1,10 +1,10 @@
 package crypto
 
 import (
-	"os"
-	"log"
 	"crypto/aes"
 	"crypto/cipher"
+	"log"
+	"os"
 )
 
 func EncryptionKey() string {

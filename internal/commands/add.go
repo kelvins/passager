@@ -16,10 +16,8 @@ func AddCmdFactory() *cobra.Command {
 		Args:  cobra.ExactArgs(3),
 		Run:   addCmdRun,
 	}
-
 	addCmd.Flags().StringP("key", "k", crypto.EncryptionKey(), "Key to encrypt/decrypt data")
 	addCmd.Flags().StringP("description", "d", "", "Description related to the credentials")
-
 	return addCmd
 }
 

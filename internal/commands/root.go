@@ -2,6 +2,7 @@ package commands
 
 import (
 	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
@@ -13,11 +14,9 @@ func RootCmdFactory() *cobra.Command {
 		Short: "Your personal password manager.",
 		Run:   rootCmdRun,
 	}
-
 	rootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
 	rootCmd.CompletionOptions.DisableDefaultCmd = true
 	rootCmd.Flags().BoolP("version", "v", false, "Show CLI version")
-
 	return rootCmd
 }
 

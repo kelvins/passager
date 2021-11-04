@@ -15,9 +15,7 @@ func ListCmdFactory() *cobra.Command {
 		Short: "List all database credentials",
 		Run:   listCmdRun,
 	}
-
 	listCmd.Flags().StringP("key", "k", crypto.EncryptionKey(), "Key to encrypt/decrypt data")
-
 	return listCmd
 }
 
