@@ -26,7 +26,7 @@ func AddCmdFactory() *cobra.Command {
 func addCmdRun(cmd *cobra.Command, args []string) {
 	key, err := cmd.Flags().GetString("key")
 	if err != nil {
-		log.Fatal("Invalid key")
+		log.Fatal(err)
 	}
 	password := crypto.Encrypt(args[2], key)
 	description, _ := cmd.Flags().GetString("description")

@@ -24,7 +24,7 @@ func ListCmdFactory() *cobra.Command {
 func listCmdRun(cmd *cobra.Command, args []string) {
 	key, err := cmd.Flags().GetString("key")
 	if err != nil {
-		log.Fatal("Invalid key")
+		log.Fatal(err)
 	}
 	credentials, err := models.ReadAll("")
 	if err != nil {

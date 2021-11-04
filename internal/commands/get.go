@@ -29,7 +29,7 @@ func getCmdRun(cmd *cobra.Command, args []string) {
 	}
 	key, err := cmd.Flags().GetString("key")
 	if err != nil {
-		log.Fatal("Invalid key")
+		log.Fatal(err)
 	}
 	var newCredentials []models.Credential
 	for _, credential := range credentials {
