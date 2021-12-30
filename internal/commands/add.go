@@ -11,28 +11,35 @@ import (
 
 func AddCmdFactory() *cobra.Command {
 	var addCmd = &cobra.Command{
-		Use:   "add [NAME] [LOGIN] [PASSWORD]",
+		Use:   "add [NAME]",
 		Short: "Add credentials to the database",
-		Args:  cobra.ExactArgs(3),
+		Args:  cobra.ExactArgs(1),
 		Run:   addCmdRun,
 	}
+	addCmd.Flags().StringP("login", "l", "", "Credential login")
+	addCmd.Flags().StringP("password", "p", "", "Credential password (required)")
 	addCmd.Flags().StringP("key", "k", crypto.EncryptionKey(), "Key to encrypt/decrypt data")
 	addCmd.Flags().StringP("description", "d", "", "Description related to the credentials")
+	addCmd.MarkFlagRequired("password")
 	return addCmd
 }
 
-func addCmdRun(cmd *cobra.Command, args []string) {
-	key, err := cmd.Flags().GetString("key")
+func getStringFlag(cmd *cobra.Command, flag string) string {
+	value, err := cmd.Flags().GetString(flag)
 	if err != nil {
 		log.Fatal(err)
 	}
-	password := crypto.Encrypt(args[2], key)
-	description, _ := cmd.Flags().GetString("description")
+	return value
+}
+
+func addCmdRun(cmd *cobra.Command, args []string) {
+	key := getStringFlag(cmd, "key")
+	password := getStringFlag(cmd, "password")
 	credential := models.Credential{
 		Name:        args[0],
-		Login:       args[1],
-		Password:    password,
-		Description: description,
+		Login:       getStringFlag(cmd, "login"),
+		Password:    crypto.Encrypt(password, key),
+		Description: getStringFlag(cmd, "description"),
 	}
 	if err := models.Create(&credential); err != nil {
 		log.Fatal(err)

@@ -45,7 +45,7 @@ $ passager generate
 `add` a new credential:
 
 ```
-$ passager add MyCredential my@email.com supersecret
+$ passager add MyCredential -l my@email.com -p SuperSecret
 ```
 
 > ⚠️ Use a whitespace prefix to your command to prevent it from being included in the history.
