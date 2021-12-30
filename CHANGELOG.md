@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Change the `add` command to make login optional.
+
 ### Fixed
 
 - Show an error message when trying to delete an invalid credential.

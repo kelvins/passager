@@ -26,7 +26,7 @@ func TestAddCmd(t *testing.T) {
 	cmd := AddCmdFactory()
 	buf := bytes.NewBufferString("")
 	cmd.SetOut(buf)
-	cmd.SetArgs([]string{"FOO", "BAR", "PASS"})
+	cmd.SetArgs([]string{"FOO", "-l", "BAR", "-p", "PASS"})
 	cmd.Execute()
 	out, _ := ioutil.ReadAll(buf)
 	assert.Equal(t, "Credential FOO successfully created!\n", string(out))
