@@ -53,7 +53,7 @@ func ReadAll(name string) ([]Credential, error) {
 	return credentials, err
 }
 
-func readFirst(name string) (Credential, error) {
+func ReadFirst(name string) (Credential, error) {
 	conn := openConnection()
 	var credential Credential
 	err := conn.Where("name = ?", name).First(&credential).Error
@@ -61,7 +61,7 @@ func readFirst(name string) (Credential, error) {
 }
 
 func Delete(name string) error {
-	if _, err := readFirst(name); err != nil {
+	if _, err := ReadFirst(name); err != nil {
 		return err
 	}
 	conn := openConnection()
