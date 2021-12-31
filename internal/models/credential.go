@@ -46,6 +46,11 @@ func Create(cred *Credential) error {
 	return conn.Create(cred).Error
 }
 
+func Save(cred *Credential) error {
+	conn := openConnection()
+	return conn.Save(&cred).Error
+}
+
 func ReadAll(name string) ([]Credential, error) {
 	conn := openConnection()
 	var credentials []Credential

@@ -39,9 +39,17 @@ func editCmdRun(cmd *cobra.Command, args []string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	key := getStringFlagOrDefault(cmd, "key", "")
+	oldPassword := crypto.Decrypt(credential.Password, key)
 	credential.Login = getStringFlagOrDefault(cmd, "login", credential.Login)
-	credential.Password = getStringFlagOrDefault(cmd, "password", credential.Password)
+	credential.Password = crypto.Encrypt(getStringFlagOrDefault(cmd, "password", oldPassword), key)
 	credential.Description = getStringFlagOrDefault(cmd, "description", credential.Description)
-	// TODO: save credential to database
+
+	err = models.Save(&credential)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	fmt.Fprintf(cmd.OutOrStdout(), "Credential %s successfully updated!\n", args[0])
 }
