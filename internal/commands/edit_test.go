@@ -14,14 +14,6 @@ func TestEditCmd(t *testing.T) {
 	setUp()
 	defer tearDown()
 
-	credential := models.Credential{
-		Name:        "FOO",
-		Login:       "BAR",
-		Password:    crypto.Encrypt("PASS", crypto.EncryptionKey()),
-		Description: "DESC",
-	}
-	models.Create(&credential)
-
 	cmd := EditCmdFactory()
 	buf := bytes.NewBufferString("")
 	cmd.SetOut(buf)

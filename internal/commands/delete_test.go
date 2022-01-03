@@ -13,13 +13,6 @@ func TestDeleteCmd(t *testing.T) {
 	setUp()
 	defer tearDown()
 
-	credential := models.Credential{
-		Name:        "FOO",
-		Login:       "BAR",
-		Password:    "PASS",
-		Description: "DESC",
-	}
-	models.Create(&credential)
 	cred, err := models.ReadAll("FOO")
 	assert.Nil(t, err)
 	assert.Equal(t, len(cred), 1)

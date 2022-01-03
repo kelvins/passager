@@ -13,6 +13,14 @@ import (
 
 func setUp() {
 	os.Setenv("PASSAGER_DATABASE", "/tmp/passager-test.db")
+
+	credential := models.Credential{
+		Name:        "FOO",
+		Login:       "BAR",
+		Password:    crypto.Encrypt("PASS", crypto.EncryptionKey()),
+		Description: "DESC",
+	}
+	models.Create(&credential)
 }
 
 func tearDown() {
@@ -26,14 +34,14 @@ func TestAddCmd(t *testing.T) {
 	cmd := AddCmdFactory()
 	buf := bytes.NewBufferString("")
 	cmd.SetOut(buf)
-	cmd.SetArgs([]string{"FOO", "-l", "BAR", "-p", "PASS"})
+	cmd.SetArgs([]string{"TEST", "-l", "FOO", "-p", "BAR"})
 	cmd.Execute()
 	out, _ := ioutil.ReadAll(buf)
-	assert.Equal(t, "Credential FOO successfully created!\n", string(out))
-	cred, err := models.ReadAll("FOO")
+	assert.Equal(t, "Credential TEST successfully created!\n", string(out))
+	cred, err := models.ReadAll("TEST")
 	assert.Nil(t, err)
 	assert.Equal(t, len(cred), 1)
-	assert.Equal(t, "FOO", cred[0].Name)
-	assert.Equal(t, "BAR", cred[0].Login)
-	assert.Equal(t, "PASS", crypto.Decrypt(cred[0].Password, crypto.EncryptionKey()))
+	assert.Equal(t, "TEST", cred[0].Name)
+	assert.Equal(t, "FOO", cred[0].Login)
+	assert.Equal(t, "BAR", crypto.Decrypt(cred[0].Password, crypto.EncryptionKey()))
 }
