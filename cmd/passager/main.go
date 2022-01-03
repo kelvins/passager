@@ -11,5 +11,6 @@ func main() {
 	rootCmd.AddCommand(commands.GetCmdFactory())
 	rootCmd.AddCommand(commands.ListCmdFactory())
 	rootCmd.AddCommand(commands.DeleteCmdFactory())
+	rootCmd.AddCommand(commands.EditCmdFactory())
 	rootCmd.Execute()
 }
