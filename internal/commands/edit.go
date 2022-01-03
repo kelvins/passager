@@ -41,9 +41,9 @@ func editCmdRun(cmd *cobra.Command, args []string) {
 	}
 
 	key := getStringFlagOrDefault(cmd, "key", "")
-	oldPassword := crypto.Decrypt(credential.Password, key)
+	currPassword := crypto.Decrypt(credential.Password, key)
 	credential.Login = getStringFlagOrDefault(cmd, "login", credential.Login)
-	credential.Password = crypto.Encrypt(getStringFlagOrDefault(cmd, "password", oldPassword), key)
+	credential.Password = crypto.Encrypt(getStringFlagOrDefault(cmd, "password", currPassword), key)
 	credential.Description = getStringFlagOrDefault(cmd, "description", credential.Description)
 
 	err = models.Save(&credential)

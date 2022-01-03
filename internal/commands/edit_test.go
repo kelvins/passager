@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/kelvins/passager/internal/models"
+	"github.com/kelvins/passager/pkg/crypto"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -16,13 +17,10 @@ func TestEditCmd(t *testing.T) {
 	credential := models.Credential{
 		Name:        "FOO",
 		Login:       "BAR",
-		Password:    "PASS",
+		Password:    crypto.Encrypt("PASS", crypto.EncryptionKey()),
 		Description: "DESC",
 	}
 	models.Create(&credential)
-	cred, err := models.ReadAll("FOO")
-	assert.Nil(t, err)
-	assert.Equal(t, len(cred), 1)
 
 	cmd := EditCmdFactory()
 	buf := bytes.NewBufferString("")
@@ -32,7 +30,10 @@ func TestEditCmd(t *testing.T) {
 	out, _ := ioutil.ReadAll(buf)
 	assert.Equal(t, "Credential FOO successfully updated!\n", string(out))
 
-	cred, err = models.ReadAll("FOO")
+	cred, err := models.ReadFirst("FOO")
 	assert.Nil(t, err)
-	assert.Equal(t, len(cred), 0)
+	assert.Equal(t, "FOO", cred.Name)
+	assert.Equal(t, "BAR2", cred.Login)
+	assert.Equal(t, "PASS2", crypto.Decrypt(cred.Password, crypto.EncryptionKey()))
+	assert.Equal(t, "DESC2", cred.Description)
 }
