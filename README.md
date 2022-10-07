@@ -4,9 +4,9 @@
 
 Some `passager` features:
 
-- Easy to use. Manage your passwords locally using a simple command line interface (CLI).
-- You own your data. Move your database file to wherever you want.
-- Secure by default. Use Advanced Encryption Standard (AES) by default.
+- Easy to use: manage your passwords locally using a simple command line interface (CLI).
+- Own your data: move your encrypted database file to wherever you want.
+- Secure by default: use advanced encryption standard (AES) by default.
 
 ## :package: Installation
 
@@ -32,6 +32,7 @@ Check the `passager` version:
 
 ```
 $ passager --version
+Passager v0.2.0
 ```
 
 ## 🚸 Usage
@@ -68,7 +69,7 @@ $ passager list
 $ passager delete MyCredential
 ```
 
-When in doubt, use the `help` flag:
+When in doubt, use the `help` flag, for example:
 
 ```
 $ passager add -h
