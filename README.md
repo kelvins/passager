@@ -10,29 +10,35 @@ Some `passager` features:
 
 ## :package: Installation
 
-Download the appropriate binary for your OS and architecture from the [releases](https://github.com/kelvins/passager/releases) page, for example:
+Download the appropriate file for your OS and architecture from the [releases](https://github.com/kelvins/passager/releases) page, for example:
 
 ```
-$ wget --no-check-certificate https://github.com/kelvins/passager/releases/download/v0.2.0/passager-linux-amd64
+$ wget --no-check-certificate https://github.com/kelvins/passager/releases/download/v0.3.0/passager_0.3.0_Darwin_x86_64.tar.gz
+```
+
+Extract the binary:
+
+```
+$ tar -xzvf passager_0.3.0_Darwin_x86_64.tar.gz passager
 ```
 
 Make sure the file is executable:
 
 ```
-$ chmod +x ./passager-linux-amd64
+$ chmod +x ./passager
 ```
 
 Move the file to a bin directory that is included in your PATH, for example:
 
 ```
-$ sudo mv ./passager-linux-amd64 /usr/local/bin/passager
+$ sudo mv ./passager /usr/local/bin/passager
 ```
 
 Check the `passager` version:
 
 ```
 $ passager --version
-Passager v0.2.0
+Passager v0.3.0
 ```
 
 ## 🚸 Usage
