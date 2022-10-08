@@ -6,6 +6,10 @@ help:  ## Show this helper
 build-dev:  ## Build the application for development purposes
 	@goreleaser release --snapshot --rm-dist
 
+.PHONY: release
+release:  ## Release a new version using goreleaser
+	@goreleaser release --rm-dist
+
 .PHONY: format
 format:  ## Apply go fmt to all files
 	@go fmt ./...
