@@ -4,7 +4,7 @@ help:  ## Show this helper
 
 .PHONY: build-dev
 build-dev:  ## Build the application for development purposes
-	@go build -o passager cmd/passager/main.go
+	@goreleaser release --snapshot --rm-dist
 
 .PHONY: format
 format:  ## Apply go fmt to all files
