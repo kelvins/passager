@@ -13,13 +13,13 @@ Some `passager` features:
 Download the appropriate file for your OS and architecture from the [releases](https://github.com/kelvins/passager/releases) page, for example:
 
 ```
-$ wget --no-check-certificate https://github.com/kelvins/passager/releases/download/v0.3.0/passager_0.3.0_Darwin_x86_64.tar.gz
+$ wget --no-check-certificate https://github.com/kelvins/passager/releases/download/v0.4.0/passager_0.4.0_Darwin_x86_64.tar.gz
 ```
 
 Extract the binary:
 
 ```
-$ tar -xzvf passager_0.3.0_Darwin_x86_64.tar.gz passager
+$ tar -xzvf passager_0.4.0_Darwin_x86_64.tar.gz passager
 ```
 
 Make sure the file is executable:
@@ -38,7 +38,7 @@ Check the `passager` version:
 
 ```
 $ passager --version
-Passager v0.3.0
+Passager v0.4.0
 ```
 
 ## 🚸 Usage
