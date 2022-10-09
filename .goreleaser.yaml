@@ -2,12 +2,22 @@ before:
   hooks:
     - go mod tidy
 builds:
-  - main: ./cmd/passager
+  - id: passager
+    main: ./cmd/passager
     env:
-      - CGO_ENABLED=0
+      - CGO_ENABLED=1
+    goos:
+      - darwin
+  # Cross compiling macOS-to-linux using musl-cross
+  - id: passager_cross
+    main: ./cmd/passager
+    env:
+      - CGO_ENABLED=1
+      - CC=x86_64-linux-musl-gcc
     goos:
       - linux
-      - darwin
+    goarch:
+      - amd64
 archives:
   - replacements:
       darwin: Darwin
