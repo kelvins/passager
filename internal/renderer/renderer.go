@@ -9,6 +9,7 @@ import (
 	"github.com/olekukonko/tablewriter"
 )
 
+// PrintCredentials render a table with one or more credentials to the provided io.Writer.
 func PrintCredentials(w io.Writer, data interface{}) {
 	var credentials []models.Credential
 	switch value := data.(type) {

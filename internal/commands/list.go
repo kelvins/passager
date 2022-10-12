@@ -9,6 +9,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// ListCmdFactory is responsible for creating the passager list sub-command.
+// This command is responsible for listing database credentials.
 func ListCmdFactory() *cobra.Command {
 	var listCmd = &cobra.Command{
 		Use:   "list",

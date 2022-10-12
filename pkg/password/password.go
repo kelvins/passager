@@ -34,7 +34,7 @@ func generateSymbols(length int8) []string {
 	return generateRandomSequence(sequence, length)
 }
 
-// Generates a random password using letters, numbers and symbols.
+// Generate generates a random password using letters and optionally numbers and/or symbols.
 func Generate(length int8, numbers, symbols bool) string {
 	rand.Seed(time.Now().UnixNano())
 

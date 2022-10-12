@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+// EncryptionKey tries to get the value from the PASSAGER_ENCRYPTION_KEY environment variable.
+// When the environment variable is not defined it returns a default value.
 func EncryptionKey() string {
 	if key := os.Getenv("PASSAGER_ENCRYPTION_KEY"); key != "" {
 		return key

@@ -8,6 +8,7 @@ import (
 
 var Version = "0.4.0"
 
+// RootCmdFactory is responsible for creating the root passager cobra.Command.
 func RootCmdFactory() *cobra.Command {
 	var rootCmd = &cobra.Command{
 		Use:   "passager",

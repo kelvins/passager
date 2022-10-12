@@ -9,6 +9,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// GetCmdFactory is responsible for creating the passager get sub-command.
+// This command is responsible for getting a specific credential from the database.
 func GetCmdFactory() *cobra.Command {
 	var getCmd = &cobra.Command{
 		Use:   "get [NAME]",

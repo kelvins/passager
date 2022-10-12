@@ -8,6 +8,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// GenerateCmdFactory is responsible for creating the passager generate sub-command.
+// This command is responsible for generating new passwords.
 func GenerateCmdFactory() *cobra.Command {
 	var generateCmd = &cobra.Command{
 		Use:   "generate",

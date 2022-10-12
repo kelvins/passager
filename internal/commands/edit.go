@@ -9,6 +9,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// EditCmdFactory is responsible for creating the passager edit sub-command.
+// This command is responsible for editing existing credentials from the database.
 func EditCmdFactory() *cobra.Command {
 	var editCmd = &cobra.Command{
 		Use:   "edit [NAME]",

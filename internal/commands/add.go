@@ -9,6 +9,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// AddCmdFactory is responsible for creating the passager add sub-command.
+// This command is responsible for adding new credentials to the database.
 func AddCmdFactory() *cobra.Command {
 	var addCmd = &cobra.Command{
 		Use:   "add [NAME]",

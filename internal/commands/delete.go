@@ -8,6 +8,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// DeleteCmdFactory is responsible for creating the passager delete sub-command.
+// This command is responsible for deleting existing credentials from the database.
 func DeleteCmdFactory() *cobra.Command {
 	var deleteCmd = &cobra.Command{
 		Use:   "delete [NAME]",
